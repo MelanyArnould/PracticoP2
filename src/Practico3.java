@@ -82,7 +82,6 @@ materias y retorna el promedio general de calificaciones (considerando los 6 ex√
 
     public static boolean repetidos (int [][] mat, int fila, int col){
         int num = mat [fila][col];
-        //hola sifhbeirv
         int f = fila;
         int c = col;
         for(int i = 0;i<4;i++){
