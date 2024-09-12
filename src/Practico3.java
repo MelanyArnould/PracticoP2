@@ -1,4 +1,5 @@
 //Hola
+// hola
 
 public class Practico3 {
     public static void main(String[] args) {
@@ -8,8 +9,10 @@ public class Practico3 {
         //ejercicio2(matrizRectangular);
         int[][] mat = {{1,2,3}, {4,2,0}, {1,2,3}};
         //ejercicio3(mat);
+
         int[][] matrizDiagonales = {{1,1,5,1,1},{1,1,1,1,1},{5,1,1,1,1}};
         ejercicio4(matrizDiagonales,0,2);
+
     }
     /*
     Implementar un m√©todo que recibe una matriz que corresponde a las notas de 30 alumnos en 6
@@ -157,6 +160,55 @@ materias y retorna el promedio general de calificaciones (considerando los 6 ex√
             j++;
         }
         return repetido;
+    }
+
+    public static boolean repetidos (int [][] mat, int fila, int col){
+        int num = mat [fila][col];
+        int f = fila;
+        int c = col;
+        for(int i = 0;i<4;i++){
+            if(i==0){
+                f = fila + 1;
+                c = col + 1;
+            }
+            if(i==1){
+                f = fila + 1;
+                c = col - 1;
+            }
+            if(i==2){
+                f = fila - 1;
+                c = col + 1;
+            }
+            if(i==3){
+                f = fila - 1;
+                c = col - 1;
+            }
+           while(f<=mat.length-1 && c<= mat[0].length-1 && f>=0 && c>=0){
+            if(i==0){
+                f++;
+                c++;
+            }
+            if(i==1){
+                f++;
+                c--;
+            }
+            if(i==2){
+                f--;
+                c++;
+            }
+            if(i==3){
+                f--;
+                c--;
+            }
+            
+            if(mat[f][c] == num){
+                return true;
+            }
+            
+            } 
+        }
+        return false;
+        
     }
 
 }
