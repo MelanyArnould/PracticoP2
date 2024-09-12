@@ -7,7 +7,9 @@ public class Practico3 {
         int[][] matrizRectangular = {{3, 5}, {2, 4}, {-1, -2}, {-1, 8}};
         //ejercicio2(matrizRectangular);
         int[][] mat = {{1,2,3}, {4,2,0}, {1,2,3}};
-        ejercicio3(mat);
+        //ejercicio3(mat);
+        int[][] matrizDiagonales = {{1,1,5,1,1},{1,1,1,1,1},{5,1,1,1,1}};
+        ejercicio4(matrizDiagonales,0,2);
     }
     /*
     Implementar un método que recibe una matriz que corresponde a las notas de 30 alumnos en 6
@@ -76,6 +78,85 @@ materias y retorna el promedio general de calificaciones (considerando los 6 ex�
         }
         System.out.println(numerosIguales);
         return numerosIguales;
+    }
+    /*
+    Dada una matriz y una posición en esa matriz (dada por la fila y la columna) indicar si el elemento
+    que se encuentra en esa posición está repetido o no en alguna de las diagonales que pasan por esa
+    posición.
+     */
+    public static boolean ejercicio4(int[][] mat, int  fila, int col) {
+        boolean repetido = false;
+        for (int i=fila+1; i<mat.length && !repetido; i++) {
+            for (int j= col+1; j< mat[i].length; j++) {
+                if (mat[i][j] == mat[fila][col]) {
+                    repetido = true;
+                }
+            }
+            for (int j= col-1; j>=0 && !repetido; j--) {
+                if (mat[i][j] == mat[fila][col]) {
+                    repetido = true;
+                }
+            }
+        }
+        for (int i=fila-1; i>=0 && !repetido; i--) {
+            for (int j= col+1; j<mat[i].length; j++) {
+                if (mat[i][j] == mat[fila][col]) {
+                    repetido = true;
+                }
+            }
+            for (int j= col-1 ; j>=0 && !repetido; j--) {
+                if (mat[i][j] == mat[fila][col]) {
+                    repetido = true;
+                }
+            }
+        }
+        System.out.println(repetido);
+        return repetido;
+    }
+    public static boolean repetidosProfe(int[][] mat, int  fila, int col) {
+        int valor = mat[fila][col];
+        boolean repetido = false;
+        //Chequeo arriba a la izquierda
+        int i=fila -1;
+        int j=col -1;
+        while (i>=0 && j>=0 && !repetido) {
+            if (mat[i][j] == valor) {
+                repetido = true;
+            }
+            i--;
+            j--;
+        }
+        //Chequeo arriba a la derecha
+        i=fila -1;
+        j=col +1;
+        while (i>=0 && j<=mat[0].length && !repetido) {
+            if (mat[i][j] == valor) {
+                repetido = true;
+            }
+            i--;
+            j++;
+        }
+        //Chequeo abajo a la izquierda
+        i=fila +1;
+        j=col -1;
+        while (i< mat.length && j>=0 && !repetido) {
+            if (mat[i][j] == valor) {
+                repetido = true;
+            }
+            i++;
+            j--;
+        }
+        //Chequeo abajo a la derecha
+        i=fila +1;
+        j=col +1;
+        while (i< mat.length && j<=mat[0].length && !repetido) {
+            if (mat[i][j] == valor) {
+                repetido = true;
+            }
+            i++;
+            j++;
+        }
+        return repetido;
     }
 
 }
