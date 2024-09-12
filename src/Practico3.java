@@ -1,3 +1,5 @@
+//Hola
+
 public class Practico3 {
     public static void main(String[] args) {
         int[][] matrizAlumnos = {{3,6,3}, {1,4,6}, {4,4,4}};
