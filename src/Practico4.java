@@ -26,6 +26,25 @@ public class Practico4 {
 
         eliminarEspacios(string);
 
+        secuencia("AAGUGDLKWDAIHWUAAAACHWUWAAHICHIWOAAAAAAA");
+
+        agregada("hola", "lboha");
+
+        String frase1 = "gatovacaperroleonperrogatogatoovejaperro";
+        String secuencia1a = "perro";
+        String secuencia1b = "gato";
+        System.out.println(mismaCantidad(frase1, secuencia1a, secuencia1b)); // Debería mostrar "SI"
+
+        String frase2 = "perrogatovacaperrogatogato";
+        String secuencia2a = "oveja";
+        String secuencia2b = "gato";
+        System.out.println(mismaCantidad(frase2, secuencia2a, secuencia2b)); // Debería mostrar "NO"
+
+        String frase3 = "perrogatovacaperrogatogato";
+        String secuencia3a = "oveja";
+        String secuencia3b = "elefante";
+        System.out.println(mismaCantidad(frase3, secuencia3a, secuencia3b)); // Debería mostrar "SI"
+
     }
     //3. Leer un string y un carácter e indicar la cantidad de veces que aparece ese carácter en el string.
     public static void cuantasVecesAparece(String string, char caracter) {
@@ -46,10 +65,66 @@ public class Practico4 {
         for (int i = 0; i< string.length(); i++ ){
             char caracter = string.charAt(i);
             if( caracter != ' '){
-                res+= caracter;
+                res += caracter;
             }
         }
         System.out.println(res);
     }
+
+    //5. Dado un string de largo máximo 100, que contiene letras en mayúsculas, indicar la secuencia más
+    //larga de letras "A" consecutivas. Ejemplo: ABAABCA debe retornar 2.
+    public static void secuencia(String frase) {
+        int contador = 0;
+        int aMax = 0;
+        for (int i=0; i<frase.length(); i++) {
+            if (frase.charAt(i)=='A'){
+                contador++;
+            } else {
+                if (contador>aMax){
+                    aMax = contador;
+                }
+                contador = 0;
+            }
+        }
+        if (contador > aMax) {
+            aMax = contador;
+        }
+        System.out.println(aMax);
+    }
+
+    //6. Se reciben dos strings en minúsculas. El segundo contiene las mismas letras del primero
+    //desordenadas, pero se agregó una letra más en algún lugar. Identificar cuál letra es.
+    public static void agregada(String primera, String segunda){
+        char letra = 0;
+        for (int i=0; i< segunda.length(); i++){
+            if (primera.indexOf(segunda.charAt(i)) == -1){
+                letra = segunda.charAt(i);
+            }
+        }
+        System.out.println(letra);
+    }
+
+    //7. Dada una frase (string) y dos secuencias de largo máximo 100, retornar "SI" si las dos secuencias
+    //aparecen la misma cantidad de veces en el string. En otro caso retornar "NO".
+    public static String mismaCantidad(String frase, String secuencia1, String secuencia2){
+        String res = "NO";
+        int contador1 =0;
+        int contador2 =0;
+        int index = 0;
+        while ((index = frase.indexOf(secuencia1, index)) != -1) {
+            contador1++;
+            index += secuencia1.length(); // Mover el índice hacia adelante
+        }
+        index = 0;
+        while ((index = frase.indexOf(secuencia2, index)) != -1) {
+            contador2++;
+            index += secuencia2.length(); // Mover el índice hacia adelante
+        }
+        if (contador1 ==contador2){
+            res = "SI";
+        }
+        return res;
+    }
+
 
 }
