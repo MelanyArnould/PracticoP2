@@ -45,6 +45,10 @@ public class Practico4 {
         String secuencia3b = "elefante";
         System.out.println(mismaCantidad(frase3, secuencia3a, secuencia3b)); // Debería mostrar "SI"
 
+        System.out.println(mismasLetras("hshfewhfewoldva", "hola"));// SI
+
+
+
     }
     //3. Leer un string y un carácter e indicar la cantidad de veces que aparece ese carácter en el string.
     public static void cuantasVecesAparece(String string, char caracter) {
@@ -125,6 +129,18 @@ public class Practico4 {
         }
         return res;
     }
+    //8. Dados dos strings, retornar "SI" si el primer string contiene todas las letras del segundo string o
+    //"NO" en otro caso. Se asumen los dos string vienen en mayúscula.
+    public static String mismasLetras(String frase1, String frase2){
+        String tieneTodas = "SI";
+        for (int i=0; i<frase2.length(); i++){
+            if (frase1.indexOf(frase2.charAt(i) ) == -1){
+                tieneTodas = "NO";
+            }
+        }
+        return tieneTodas;
+    }
+
 
 
 }
